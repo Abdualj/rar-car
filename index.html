@@ -27,11 +27,11 @@
 
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#inventory">Inventory</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="inventory.html">Inventory</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
@@ -40,101 +40,12 @@
             <h2>Find Your Perfect Car Today</h2>
             <p>Trusted second hand vehicles with quality guarantee</p>
             <div>
-                <a href="#inventory" class="btn">Browse Our Cars</a>
-                <a href="#contact" class="btn btn-secondary" style="margin-left: 1rem;">Contact Us</a>
+                <a href="inventory.html" class="btn">Browse Our Cars</a>
+                <a href="contact.html" class="btn btn-secondary" style="margin-left: 1rem;">Contact Us</a>
             </div>
         </div>
     </section>
     
-    <section class="inventory-section" id="inventory">
-    <div class="container">
-        <h2>Our Current Inventory</h2>
-        <p class="section-subtitle" style="color: rgba(255,255,255,0.9); margin-top: 1rem;">
-            Browse our selection of quality pre-owned vehicles
-        </p>
-        
-        <!-- Inventory Filters -->
-        <div class="inventory-filters">
-            <div class="filter-group">
-                <label for="make-filter">Make</label>
-                <select id="make-filter">
-                    <option value="">All Makes</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="model-filter">Model</label>
-                <select id="model-filter">
-                    <option value="">All Models</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="price-filter">Max Price (€)</label>
-                <select id="price-filter">
-                    <option value="">Any Price</option>
-                    <option value="5000">€5,000</option>
-                    <option value="10000">€10,000</option>
-                    <option value="15000">€15,000</option>
-                    <option value="20000">€20,000</option>
-                    <option value="25000">€25,000</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="year-filter">Min Year</label>
-                <select id="year-filter">
-                    <option value="">Any Year</option>
-                    <option value="2020">2020+</option>
-                    <option value="2018">2018+</option>
-                    <option value="2015">2015+</option>
-                    <option value="2010">2010+</option>
-                </select>
-            </div>
-            <button class="btn reset-filters" id="reset-filters">Reset Filters</button>
-        </div>
-        
-        <div class="inventory-stats">
-            Showing <span id="cars-count">0</span> of <span id="total-cars">0</span> cars
-        </div>
-        
-        <!-- Dynamic car inventory will be loaded here -->
-        <div id="car-inventory" class="car-showcase">
-            <div class="loading">
-                <div class="loading-spinner"></div>
-                Loading our inventory...
-            </div>
-        </div>
-        
-        <div class="inventory-box">
-            <h3>View All Available Cars</h3>
-            <p>Check out our complete inventory of quality second hand vehicles on Nettiauto. Updated regularly with new arrivals!</p>
-            <a href="https://www.nettiauto.com/yritys/1919697" target="_blank" class="btn">Visit Our Nettiauto Page</a>
-        </div>
-    </div>
-</section>
-
-<!-- Car Details Modal -->
-<div id="car-modal" class="car-modal">
-    <div class="modal-content">
-        <button class="close-modal" id="close-modal">&times;</button>
-        <div class="car-gallery">
-            <img id="modal-car-image" src="" alt="Car Image">
-        </div>
-        <div class="car-details">
-            <h2 id="modal-car-title"></h2>
-            <div class="car-price" id="modal-car-price"></div>
-            <p id="modal-car-description"></p>
-            
-            <div class="car-specs" id="modal-car-specs">
-                <!-- Specifications will be populated by JavaScript -->
-            </div>
-            
-            <div class="car-actions">
-                <a href="#contact" class="btn" id="inquiry-btn">Make an Inquiry</a>
-                <button class="btn btn-secondary" id="nettiauto-btn">View on Nettiauto</button>
-            </div>
-        </div>
-    </div>
-</div>
-
     <section class="section" id="about">
         <div class="container">
             <h2>About RAR Car</h2>
@@ -145,13 +56,9 @@
                     <h3>Our Story</h3>
                     <p>
                         Welcome to RAR Car, your premier second hand car dealership in Tuusula. 
-                        Founded and operated by Muhammad Aljubury, we bring years of automotive 
+                        Founded and operated by a team with years of automotive 
                         expertise and a passion for connecting customers with their ideal vehicles.
                     </p>
-                    <!-- Add a photo of the owner or dealership -->
-                    <div class="owner-photo">
-                        <img src="/pictures/rar-car-owner.png" alt="Muhammad Aljubury - Owner of RAR Car">
-                    </div>
                     <p>
                         At RAR Car, we understand that buying a car is a significant decision. 
                         That's why we carefully inspect and select each vehicle in our inventory, 
@@ -244,87 +151,6 @@
                 <div class="gallery-item">
                     <h4>Customer testimonial</h4>
                     <img src="/pictures/happy.customer.jpg" alt="Customer Testimonial">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p class="section-subtitle">We're here to help you find your next vehicle</p>
-            
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    
-                    <div class="contact-item">
-                        <span class="contact-icon">👤</span>
-                        <div>
-                            <strong>Owner</strong><br>
-                            Muhammad Aljubury
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <div>
-                            <strong>Location</strong><br>
-                            Tuusula, Finland
-                        </div>
-                    </div>
-                    
-                    <!-- Add a map image or embed -->
-                    <div class="location-map">
-                        <img src="images/map.jpg" alt="RAR Car Location in Tuusula">
-                    </div>
-                    
-                    <div class="contact-item">
-                        <span class="contact-icon">📞</span>
-                        <div>
-                            <strong>Phone</strong><br>
-                            +358 XX XXX XXXX
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <span class="contact-icon">📧</span>
-                        <div>
-                            <strong>Email</strong><br>
-                            info@rarcar.fi
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <span class="contact-icon">🌐</span>
-                        <div>
-                            <strong>Nettiauto</strong><br>
-                            <a href="https://www.nettiauto.com/yritys/1919697" target="_blank" style="color: #8B0000;">View Our Inventory</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form>
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" placeholder="Your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="your.email@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="tel" placeholder="+358 XX XXX XXXX">
-                        </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea placeholder="Tell us what you're looking for..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
                 </div>
             </div>
         </div>

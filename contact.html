@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - RAR Car</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="main.js"></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <section class="section" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">We're here to help you find your next vehicle</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">👤</span>
+                        <div>
+                            <strong>Owner</strong><br>
+                            Muhammad Aljubury
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <strong>Location</strong><br>
+                            Tuusula, Finland
+                        </div>
+                    </div>
+                    <div class="location-map">
+                        <img src="images/map.jpg" alt="RAR Car Location in Tuusula">
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <strong>Phone</strong><br>
+                            +358 XX XXX XXXX
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <strong>Email</strong><br>
+                            info@rarcar.fi
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🌐</span>
+                        <div>
+                            <strong>Nettiauto</strong><br>
+                            <a href="https://www.nettiauto.com/yritys/1919697" target="_blank" style="color: #8B0000;">View Our Inventory</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" placeholder="+358 XX XXX XXXX">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="Tell us what you're looking for..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="footer-placeholder"></div>
+    <script>
+    // Simple HTML include for header and footer
+    function includeHTML(id, file) {
+        fetch(file)
+            .then(res => res.text())
+            .then(data => { document.getElementById(id).innerHTML = data; });
+    }
+    includeHTML('header-placeholder', 'header.html');
+    includeHTML('footer-placeholder', 'footer.html');
+    </script>
+</body>
+</html>
