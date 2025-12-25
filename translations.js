@@ -6,6 +6,7 @@ const translations = {
         
         // Navigation
         navHome: "Home",
+        navCars: "Cars",
         navInventory: "Inventory",
         navAbout: "About",
         navServices: "Services",
@@ -123,6 +124,13 @@ const translations = {
         sunday: "Sunday",
         closed: "CLOSED",
         contactHoursTitle: "Opening Hours",
+        
+        // Side Menu
+        sideMenuTitle: "Menu",
+        sideMenuNavigation: "Navigation",
+        sideMenuLanguage: "Language",
+        sideMenuContact: "Contact Us",
+        sideMenuHours: "Opening Hours",
     },
     fi: {
         // Header
@@ -130,6 +138,7 @@ const translations = {
         
         // Navigation
         navHome: "Etusivu",
+        navCars: "Autot",
         navInventory: "Varastossa",
         navAbout: "Tietoa",
         navServices: "Palvelut",
@@ -144,7 +153,7 @@ const translations = {
         // About Section
         aboutTitle: "Tietoa RAR Carista",
         aboutSubtitle: "Luotettava kumppanisi laatuajoneuvojen löytämisessä",
-        aboutStoryTitle: "TarinaMme",
+        aboutStoryTitle: "Tarinamme",
         aboutStoryP1: "Tervetuloa RAR Cariin, johtavaan käytettyjen autojen liikkeeseen Tuusulassa. Perustamme ja ylläpitämämme yritys, jolla on vuosien kokemus autoteollisuudesta ja intohimo yhdistää asiakkaat heidän unelma-ajoneuvoihinsa.",
         aboutStoryP2: "RAR Carissa ymmärrämme, että auton ostaminen on merkittävä päätös. Siksi tarkastamme ja valitsemme jokaisen varastossamme olevan ajoneuvon huolellisesti varmistaaksemme laadun, luotettavuuden ja arvon. Sitoutumisemme läpinäkyvyyteen ja asiakastyytyväisyyteen on tehnyt meistä luotetun nimen Tuusulan yhteisössä.",
         aboutStoryP3: "Olitpa etsimässä ensimmäistä autoasi, päivittämässä perheajoneuvoasi tai etsimässä luotettavaa työmatkaajoneuvoasi, autamme sinua joka askeleella.",
@@ -247,6 +256,13 @@ const translations = {
         sunday: "Sunnuntai",
         closed: "SULJETTU",
         contactHoursTitle: "Aukioloajat",
+        
+        // Side Menu
+        sideMenuTitle: "Valikko",
+        sideMenuNavigation: "Navigointi",
+        sideMenuLanguage: "Kieli",
+        sideMenuContact: "Ota yhteyttä",
+        sideMenuHours: "Aukioloajat",
     }
 };
 
