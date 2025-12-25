@@ -3,48 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact RAR Car in Tuusula. Call us at 050 5121787 or visit our dealership. Open Mon-Fri 10:00-18:00, Sat 10:00-15:00. We're here to help you find your perfect vehicle.">
+    <meta name="keywords" content="contact RAR Car, car dealership Tuusula contact, buy car Tuusula, RAR Car phone number">
+    <meta name="author" content="RAR Car Autoliike Oy">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact RAR Car - Tuusula Car Dealership">
+    <meta property="og:description" content="Get in touch with RAR Car. Phone: 050 5121787. Located in Tuusula, Finland.">
+    
     <title>Contact - RAR Car</title>
+    <link rel="icon" type="image/x-icon" href="pictures/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="pictures/favicon-32.png">
+    <link rel="apple-touch-icon" href="pictures/logo.jpg">
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="main.js"></script>
+    <script src="translations.js"></script>
 </head>
 <body>
     <div id="header-placeholder"></div>
     <section class="section" id="contact">
         <div class="container">
-            <h2>Get In Touch</h2>
-            <p class="section-subtitle">We're here to help you find your next vehicle</p>
+            <h2 data-translate="contactTitle">Get In Touch</h2>
+            <p class="section-subtitle" data-translate="contactSubtitle">We're here to help you find your next vehicle</p>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <span class="contact-icon">👤</span>
-                        <div>
-                            <strong>Owner</strong><br>
-                            Muhammad Aljubury
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <div>
-                            <strong>Location</strong><br>
-                            Tuusula, Finland
-                        </div>
-                    </div>
+                    <h3 data-translate="contactInfoTitle">Contact Information</h3>
                     <div class="location-map">
-                        <img src="images/map.jpg" alt="RAR Car Location in Tuusula">
+                        <a href="https://maps.app.goo.gl/hhght5mJrMMde3Vo9" target="_blank" class="map-link">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1943.4586789!2d25.0289!3d60.4031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjDCsDI0JzExLjIiTiAyNcKwMDEnNDQuMCJF!5e0!3m2!1sen!2sfi!4v1234567890" 
+                                width="100%" 
+                                height="250" 
+                                style="border:0; border-radius: 8px; pointer-events: none;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </a>
                     </div>
                     <div class="contact-item">
                         <span class="contact-icon">📞</span>
                         <div>
-                            <strong>Phone</strong><br>
-                            +358 XX XXX XXXX
+                            <strong data-translate="contactPhone">Phone</strong><br>
+                            <a href="tel:0505121787" style="color: #ff6b6b;">050 5121787</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <span class="contact-icon">📧</span>
                         <div>
-                            <strong>Email</strong><br>
-                            info@rarcar.fi
+                            <strong data-translate="contactEmail">Email</strong><br>
+                            <a href="mailto:rar.car.autoliike@gmail.com" style="color: #ff6b6b;">rar.car.autoliike@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📘</span>
+                        <div>
+                            <strong>Facebook</strong><br>
+                            <a href="https://www.facebook.com/p/RAR-Car-Autoliike-Oy-100057055495334/" target="_blank" style="color: #ff6b6b;">RAR Car Autoliike</a>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -54,27 +70,82 @@
                             <a href="https://www.nettiauto.com/yritys/1919697" target="_blank" style="color: #8B0000;">View Our Inventory</a>
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🕐</span>
+                        <div>
+                            <strong data-translate="contactHoursTitle">Opening Hours</strong><br>
+                            <div class="opening-hours">
+                                <div class="hours-row">
+                                    <span data-translate="monday">Monday</span>
+                                    <span>10:00 - 18:00</span>
+                                </div>
+                                <div class="hours-row">
+                                    <span data-translate="tuesday">Tuesday</span>
+                                    <span>10:00 - 18:00</span>
+                                </div>
+                                <div class="hours-row">
+                                    <span data-translate="wednesday">Wednesday</span>
+                                    <span>10:00 - 18:00</span>
+                                </div>
+                                <div class="hours-row">
+                                    <span data-translate="thursday">Thursday</span>
+                                    <span>10:00 - 18:00</span>
+                                </div>
+                                <div class="hours-row">
+                                    <span data-translate="friday">Friday</span>
+                                    <span>10:00 - 18:00</span>
+                                </div>
+                                <div class="hours-row">
+                                    <span data-translate="saturday">Saturday</span>
+                                    <span>10:00 - 15:00</span>
+                                </div>
+                                <div class="hours-row closed">
+                                    <span data-translate="sunday">Sunday</span>
+                                    <span data-translate="closed">CLOSED</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form>
+                    <h3 data-translate="contactFormTitle">Send Us a Message</h3>
+                    <form id="contact-form">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" placeholder="Your name" required>
+                            <label data-translate="contactFormName">Name</label>
+                            <input type="text" name="name" id="contact-name" data-translate="contactFormName" placeholder="Your name" required>
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="your.email@example.com" required>
+                            <label data-translate="contactFormEmail">Email</label>
+                            <input type="email" name="email" id="contact-email" placeholder="your.email@example.com" required>
                         </div>
                         <div class="form-group">
-                            <label>Phone</label>
-                            <input type="tel" placeholder="+358 XX XXX XXXX">
+                            <label data-translate="contactFormPhone">Phone</label>
+                            <input type="tel" name="phone" id="contact-phone" data-translate="contactFormPhone" placeholder="+358 XX XXX XXXX">
                         </div>
                         <div class="form-group">
-                            <label>Message</label>
-                            <textarea placeholder="Tell us what you're looking for..." required></textarea>
+                            <label data-translate="contactFormPreferredMethod">Preferred Contact Method</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="contact-email" id="contact-by-email" value="email" checked>
+                                    <span data-translate="contactFormMethodEmail">Email</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="contact-phone" id="contact-by-phone" value="phone">
+                                    <span data-translate="contactFormMethodPhone">Phone</span>
+                                </label>
+                            </div>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
+                        <div class="form-group">
+                            <label data-translate="contactFormCarInterest">Interested in a specific car? (Optional)</label>
+                            <select name="car" id="contact-car">
+                                <option value="" data-translate="contactFormLoadingInventory">Loading inventory...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="contactFormMessage">Message</label>
+                            <textarea name="message" id="contact-message" data-translate="contactFormMessage" placeholder="Tell us what you're looking for..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn" data-translate="contactFormBtn">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -86,10 +157,138 @@
     function includeHTML(id, file) {
         fetch(file)
             .then(res => res.text())
-            .then(data => { document.getElementById(id).innerHTML = data; });
+            .then(data => { 
+                document.getElementById(id).innerHTML = data;
+                // Re-initialize translations after loading header/footer
+                if (typeof translatePage === 'function') {
+                    translatePage(currentLang);
+                }
+                // Reinitialize language toggle button
+                if (typeof initLanguageToggle === 'function') {
+                    initLanguageToggle();
+                }
+                // Reinitialize side menu
+                if (typeof initSideMenu === 'function') {
+                    initSideMenu();
+                }
+            });
     }
     includeHTML('header-placeholder', 'header.html');
     includeHTML('footer-placeholder', 'footer.html');
+    
+    // Load car inventory for dropdown
+    let carInventory = [];
+    
+    async function loadCarInventory() {
+        const carSelect = document.getElementById('contact-car');
+        
+        try {
+            console.log('Loading car inventory for contact form...');
+            
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycbybGc5LwIGHV8CGiv4LskOTGA4C_xSzI8238NviGb5D9x3I707YR72RVDhEa-L2fGEOpw/exec';
+            const response = await fetch(scriptUrl);
+            const cars = await response.json();
+            
+            // Process and filter available cars
+            carInventory = cars
+                .filter(car => car.status === 'Available' || !car.status)
+                .map(car => ({
+                    id: parseInt(car.id) || parseInt(car.ID) || 0,
+                    make: car.make || car.Make || car.Brand || '',
+                    model: car.model || car.Model || '',
+                    year: parseInt(car.year) || parseInt(car.Year) || 0,
+                    price: parseInt(car.price) || parseInt(car.Price) || parseInt(car['Price (€)']) || 0,
+                    mileage: parseInt(car.mileage) || parseInt(car.Mileage) || parseInt(car['Mileage (km)']) || 0,
+                    registerNumber: car.registerNumber || car['Register Number'] || car.registration || 'N/A'
+                }));
+            
+            // Populate dropdown
+            carSelect.innerHTML = '<option value="">Select a car (Optional)</option>';
+            
+            carInventory.forEach(car => {
+                const option = document.createElement('option');
+                option.value = JSON.stringify(car);
+                option.textContent = `${car.make} ${car.model} (${car.year}) - €${car.price.toLocaleString()} - ${car.mileage.toLocaleString()} km`;
+                carSelect.appendChild(option);
+            });
+            
+            console.log('Car inventory loaded:', carInventory.length, 'cars');
+            
+        } catch (error) {
+            console.error('Error loading car inventory:', error);
+            carSelect.innerHTML = '<option value="">No cars available</option>';
+        }
+    }
+    
+    // Contact form handling
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load car inventory
+        loadCarInventory();
+        
+        const contactForm = document.getElementById('contact-form');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('contact-name').value;
+                const email = document.getElementById('contact-email').value;
+                const phone = document.getElementById('contact-phone').value;
+                const message = document.getElementById('contact-message').value;
+                const carSelectValue = document.getElementById('contact-car').value;
+                const preferEmail = document.getElementById('contact-by-email').checked;
+                const preferPhone = document.getElementById('contact-by-phone').checked;
+                
+                // Build preferred contact method string
+                let contactPreference = '';
+                if (preferEmail && preferPhone) {
+                    contactPreference = 'Sähköposti tai puhelin';
+                } else if (preferEmail) {
+                    contactPreference = 'Sähköposti';
+                } else if (preferPhone) {
+                    contactPreference = 'Puhelin';
+                } else {
+                    contactPreference = 'Ei määritelty';
+                }
+                
+                // Build email body - car information first if selected
+                let emailBody = '';
+                
+                // Add selected car information first if a car was selected
+                if (carSelectValue) {
+                    try {
+                        const selectedCar = JSON.parse(carSelectValue);
+                        emailBody = `AUTO JOSTA OLEN KIINNOSTUNUT:\n` +
+                            `Merkki: ${selectedCar.make}\n` +
+                            `Malli: ${selectedCar.model}\n` +
+                            `Vuosimalli: ${selectedCar.year}\n` +
+                            `Hinta: €${selectedCar.price.toLocaleString()}\n` +
+                            `Mittarilukema: ${selectedCar.mileage.toLocaleString()} km\n` +
+                            `Rekisterinumero: ${selectedCar.registerNumber}\n\n` +
+                            `${'='.repeat(40)}\n\n`;
+                    } catch (e) {
+                        console.error('Error parsing selected car:', e);
+                    }
+                }
+                
+                // Add message and contact details
+                emailBody += `VIESTI:\n${message}\n\n` +
+                    `${'='.repeat(40)}\n\n` +
+                    `YHTEYSTIEDOT:\n` +
+                    `Nimi: ${name}\n` +
+                    `Sähköposti: ${email}\n` +
+                    `Puhelin: ${phone}\n` +
+                    `Toivottu yhteydenottotapa: ${contactPreference}`;
+                
+                // Create mailto link
+                const mailtoLink = `mailto:rar.car.autoliike@gmail.com?subject=Yhteydenotto: ${encodeURIComponent(name)}&body=${encodeURIComponent(emailBody)}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
+            });
+        }
+    });
     </script>
 </body>
 </html>

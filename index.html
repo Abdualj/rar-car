@@ -3,70 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RAR Car - Your trusted second hand car dealership in Tuusula, Finland. Quality inspected vehicles with competitive pricing, transparent documentation, and personalized service.">
+    <meta name="keywords" content="used cars Tuusula, second hand cars Finland, RAR Car, quality vehicles, car dealership Tuusula, käytetyt autot Tuusula">
+    <meta name="author" content="RAR Car Autoliike Oy">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RAR Car - Quality Second Hand Cars in Tuusula">
+    <meta property="og:description" content="Trusted second hand vehicles with quality guarantee. Browse our inventory of inspected cars in Tuusula, Finland.">
+    <meta property="og:image" content="pictures/rar-car-logo.jpg">
+    
     <title>RAR Car - Quality Second Hand Cars in Tuusula</title>
+    <link rel="icon" type="image/x-icon" href="pictures/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="pictures/favicon-32.png">
+    <link rel="apple-touch-icon" href="pictures/logo.jpg">
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="main.js"></script>
+    <script src="translations.js"></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <!-- Replace with your actual logo -->
-                    <img src="/pictures/rar-car logo.JPG" alt="RAR Car Logo" class="logo">
-                    <h1>RAR Car</h1>
-                    <p class="tagline">Quality Second Hand Cars in Tuusula</p>
-                </div>
-                <div class="header-contact">
-                    <p>📞 +358 XX XXX XXXX</p>
-                    <p>📧 info@rarcar.fi</p>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="index.html#home">Home</a></li>
-            <li><a href="inventory.html">Inventory</a></li>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+    <div id="header-placeholder"></div>
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <h2>Find Your Perfect Car Today</h2>
-            <p>Trusted second hand vehicles with quality guarantee</p>
-            <div>
-                <a href="inventory.html" class="btn">Browse Our Cars</a>
-                <a href="contact.html" class="btn btn-secondary" style="margin-left: 1rem;">Contact Us</a>
+            <h2 data-translate="heroTitle">Find Your Perfect Car Today</h2>
+            <p data-translate="heroSubtitle">Trusted second hand vehicles with quality guarantee</p>
+            <div class="hero-buttons">
+                <a href="inventory.html" class="btn" data-translate="heroBtnBrowse">Browse Our Cars</a>
+                <a href="contact.html" class="btn btn-secondary" data-translate="heroBtnContact">Contact Us</a>
             </div>
         </div>
     </section>
     
     <section class="section" id="about">
         <div class="container">
-            <h2>About RAR Car</h2>
-            <p class="section-subtitle">Your trusted partner in finding quality vehicles</p>
+            <h2 data-translate="aboutTitle">About RAR Car</h2>
+            <p class="section-subtitle" data-translate="aboutSubtitle">Your trusted partner in finding quality vehicles</p>
             
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Our Story</h3>
-                    <p>
+                    <h3 data-translate="aboutStoryTitle">Our Story</h3>
+                    <p data-translate="aboutStoryP1">
                         Welcome to RAR Car, your premier second hand car dealership in Tuusula. 
                         Founded and operated by a team with years of automotive 
                         expertise and a passion for connecting customers with their ideal vehicles.
                     </p>
-                    <p>
+                    <p data-translate="aboutStoryP2">
                         At RAR Car, we understand that buying a car is a significant decision. 
                         That's why we carefully inspect and select each vehicle in our inventory, 
                         ensuring you receive quality, reliability, and value. Our commitment to 
                         transparency and customer satisfaction has made us a trusted name in the 
                         Tuusula community.
                     </p>
-                    <p>
+                    <p data-translate="aboutStoryP3">
                         Whether you're looking for your first car, upgrading your family vehicle, 
                         or searching for a reliable commuter, we're here to help you every step 
                         of the way.
@@ -75,20 +64,20 @@
                 
                 <div class="about-stats">
                     <div class="stat-box">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Cars Sold</div>
+                        <div class="stat-number" data-translate="aboutStat1Number">100+</div>
+                        <div class="stat-label" data-translate="aboutStat1Label">Cars Sold</div>
                     </div>
                     <div class="stat-box">
-                        <div class="stat-number">5★</div>
-                        <div class="stat-label">Customer Rating</div>
+                        <div class="stat-number" data-translate="aboutStat2Number">5★</div>
+                        <div class="stat-label" data-translate="aboutStat2Label">Customer Rating</div>
                     </div>
                     <div class="stat-box">
-                        <div class="stat-number">Local</div>
-                        <div class="stat-label">Tuusula Based</div>
+                        <div class="stat-number" data-translate="aboutStat3Number">Local</div>
+                        <div class="stat-label" data-translate="aboutStat3Label">Tuusula Based</div>
                     </div>
                     <div class="stat-box">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Inspected Cars</div>
+                        <div class="stat-number" data-translate="aboutStat4Number">100%</div>
+                        <div class="stat-label" data-translate="aboutStat4Label">Inspected Cars</div>
                     </div>
                 </div>
             </div>
@@ -97,99 +86,90 @@
 
     <section class="section" id="services">
         <div class="container">
-            <h2>Why Choose RAR Car</h2>
-            <p class="section-subtitle">We go the extra mile to ensure your satisfaction</p>
+            <h2 data-translate="servicesTitle">Why Choose RAR Car</h2>
+            <p class="section-subtitle" data-translate="servicesSubtitle">We go the extra mile to ensure your satisfaction</p>
             
             <div class="features">
                 <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Thorough Inspections</h3>
-                    <p>Every vehicle undergoes a comprehensive inspection to ensure quality and safety standards are met</p>
+                    <div class="feature-icon feature-icon-inspection"></div>
+                    <h3 data-translate="serviceInspectionTitle">Thorough Inspections</h3>
+                    <p data-translate="serviceInspectionDesc">Every vehicle undergoes a comprehensive inspection to ensure quality and safety standards are met</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Competitive Pricing</h3>
-                    <p>Fair and transparent pricing with no hidden fees. We offer great value for quality vehicles</p>
+                    <div class="feature-icon feature-icon-pricing"></div>
+                    <h3 data-translate="servicePricingTitle">Competitive Pricing</h3>
+                    <p data-translate="servicePricingDesc">Fair and transparent pricing with no hidden fees. We offer great value for quality vehicles</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📋</div>
-                    <h3>Complete Documentation</h3>
-                    <p>Full service history and transparent vehicle documentation for your peace of mind</p>
+                    <div class="feature-icon feature-icon-docs"></div>
+                    <h3 data-translate="serviceDocsTitle">Complete Documentation</h3>
+                    <p data-translate="serviceDocsDesc">Full service history and transparent vehicle documentation for your peace of mind</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <h3>Personalized Service</h3>
-                    <p>Individual attention to help you find the perfect car that fits your needs and budget</p>
+                    <div class="feature-icon feature-icon-service"></div>
+                    <h3 data-translate="servicePersonalTitle">Personalized Service</h3>
+                    <p data-translate="servicePersonalDesc">Individual attention to help you find the perfect car that fits your needs and budget</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚙️</div>
-                    <h3>Quality Guarantee</h3>
-                    <p>We stand behind the quality of our vehicles with confidence and integrity</p>
+                    <div class="feature-icon feature-icon-quality"></div>
+                    <h3 data-translate="serviceQualityTitle">Quality Guarantee</h3>
+                    <p data-translate="serviceQualityDesc">We stand behind the quality of our vehicles with confidence and integrity</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📍</div>
-                    <h3>Local Expertise</h3>
-                    <p>Proudly serving Tuusula and surrounding areas with local knowledge and dedication</p>
+                    <div class="feature-icon feature-icon-local"></div>
+                    <h3 data-translate="serviceLocalTitle">Local Expertise</h3>
+                    <p data-translate="serviceLocalDesc">Proudly serving Tuusula and surrounding areas with local knowledge and dedication</p>
                 </div>
             </div>
             
             <div class="service-gallery">
-            <h3>Our Process</h3>
+            <h3 data-translate="serviceGalleryTitle">Our Process</h3>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <h4>Vehicle Inspection</h4>
+                    <h4 data-translate="galleryInspection">Vehicle Inspection</h4>
                     <img src="pictures/vehicle.inspection.jpg" alt="Vehicle Inspection">
                 </div>
                 <div class="gallery-item">
-                    <h4>Quality Check</h4>
-                    <img src="/pictures/quality.check.jpg" alt="Quality Check">
+                    <h4 data-translate="galleryQuality">Quality Check</h4>
+                    <img src="pictures/quality.check.jpg" alt="Quality Check">
                 </div>
                 <div class="gallery-item">
-                    <h4>Happy customer</h4>
-                    <img src="/pictures/testimonial.jpg" alt="Happy Customer">
+                    <h4 data-translate="galleryHappy">Happy customer</h4>
+                    <img src="pictures/testimonial.jpg" alt="Happy Customer">
                 </div>
                 <div class="gallery-item">
-                    <h4>Customer testimonial</h4>
-                    <img src="/pictures/happy.customer.jpg" alt="Customer Testimonial">
+                    <h4 data-translate="galleryTestimonial">Customer testimonial</h4>
+                    <img src="pictures/happy.customer.jpg" alt="Customer Testimonial">
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <img src="rar-car logo.JPG" alt="RAR Car Logo" class="footer-logo">
-                    <h3>RAR Car</h3>
-                    <p>Your trusted second hand car dealership in Tuusula. Quality vehicles, honest service, and competitive prices.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#inventory">Our Inventory</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>📍 Tuusula, Finland</p>
-                    <p>📞 +358 XX XXX XXXX</p>
-                    <p>📧 info@rarcar.fi</p>
-                    <p><a href="https://www.nettiauto.com/yritys/1919697" target="_blank">🌐 Nettiauto Page</a></p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 RAR Car - Muhammad Aljubury. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
+    <script>
+    // Simple HTML include for header and footer
+    function includeHTML(id, file) {
+        fetch(file)
+            .then(res => res.text())
+            .then(data => { 
+                document.getElementById(id).innerHTML = data;
+                // Re-initialize translations after loading header/footer
+                if (typeof translatePage === 'function') {
+                    translatePage(currentLang);
+                }
+                // Reinitialize language toggle button
+                if (typeof initLanguageToggle === 'function') {
+                    initLanguageToggle();
+                }
+                // Reinitialize side menu
+                if (typeof initSideMenu === 'function') {
+                    initSideMenu();
+                }
+            });
+    }
+    includeHTML('header-placeholder', 'header.html');
+    includeHTML('footer-placeholder', 'footer.html');
+    </script>
 </body>
 </html>

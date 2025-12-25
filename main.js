@@ -3,25 +3,27 @@ let carInventory = [];
 
 // Image helper function
 function getCarImage(car) {
-    const imageUrl = car.image || car.Image || '';
+    // Try to get image URL from various possible column names
+    const imageUrl = car.image || car.Image || car.imageUrl || car.ImageUrl || car['Image URL'] || '';
     
-    // If it's a valid URL, use it
-    if (imageUrl && (imageUrl.startsWith('http') || imageUrl.startsWith('/images/'))) {
-        console.log('Using real image:', imageUrl);
-        return imageUrl;
+    console.log('Car:', car.make || car.Make, car.model || car.Model, '- Image URL from sheet:', imageUrl);
+    
+    // If we have a valid URL from the sheet, use it
+    if (imageUrl && imageUrl.trim() !== '') {
+        // Check if it's a valid URL or local path
+        if (imageUrl.startsWith('http') || imageUrl.startsWith('https') || imageUrl.startsWith('/')) {
+            console.log('✓ Using image from Google Sheets:', imageUrl);
+            return imageUrl;
+        }
     }
     
-    // Otherwise use the car-shaped placeholder
-    return `data:image/svg+xml;base64,${btoa(`
-        <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100%" height="100%" fill="#f8f8f8"/>
-            <rect width="80%" height="60%" x="10%" y="20%" fill="#e0e0e0" rx="5"/>
-            <circle cx="25%" cy="80%" r="8%" fill="#333"/>
-            <circle cx="75%" cy="80%" r="8%" fill="#333"/>
-            <text x="50%" y="15%" font-family="Arial, sans-serif" font-size="14" fill="#666" text-anchor="middle" font-weight="bold">${car.make || car.Make || ''} ${car.model || car.Model || ''}</text>
-            <text x="50%" y="90%" font-family="Arial, sans-serif" font-size="12" fill="#999" text-anchor="middle">${car.year || car.Year || ''}</text>
-        </svg>
-    `)}`;
+    // Fallback: Use placeholder if no valid image URL
+    const make = car.make || car.Make || 'Car';
+    const model = car.model || car.Model || '';
+    const year = car.year || car.Year || '';
+    
+    console.log('⚠ No valid image URL found, using placeholder for:', make, model, year);
+    return `https://via.placeholder.com/400x300/1a1a1a/ff6b6b?text=${encodeURIComponent(make + ' ' + model + ' ' + year)}`;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -40,13 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
-    });
-
-    // Your existing form handling code
-    document.querySelector('form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message! We will get back to you soon.');
-        this.reset();
     });
 
     // Your existing scroll animation code
@@ -75,20 +70,158 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('car-modal');
     const closeModal = document.getElementById('close-modal');
     
-    closeModal.addEventListener('click', function() {
-        modal.style.display = 'none';
-    });
+    if (closeModal) {
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+    }
     
     window.addEventListener('click', function(e) {
         if (e.target === modal) {
             modal.style.display = 'none';
         }
     });
+
+    // Inquiry modal handling
+    const inquiryModal = document.getElementById('inquiry-modal');
+    const closeInquiryModal = document.getElementById('close-inquiry-modal');
+    const inquiryBtn = document.getElementById('inquiry-btn');
+    let selectedCarForInquiry = null;
+
+    if (closeInquiryModal) {
+        closeInquiryModal.addEventListener('click', function() {
+            inquiryModal.style.display = 'none';
+        });
+    }
+
+    window.addEventListener('click', function(e) {
+        if (e.target === inquiryModal) {
+            inquiryModal.style.display = 'none';
+        }
+    });
+
+    // Handle inquiry button click from car modal
+    if (inquiryBtn) {
+        inquiryBtn.addEventListener('click', function() {
+            // Get the currently displayed car from the car modal
+            const carTitle = document.getElementById('modal-car-title').textContent;
+            const carPrice = document.getElementById('modal-car-price').textContent;
+            
+            // Find the full car object from the inventory
+            const carTitleParts = carTitle.split(' ');
+            const year = parseInt(carTitleParts[0]);
+            const make = carTitleParts[1];
+            const model = carTitleParts.slice(2).join(' ');
+            
+            const currentCar = carInventory.find(c => 
+                c.year === year && c.make === make && c.model === model
+            );
+            
+            // Store selected car info with all details
+            selectedCarForInquiry = currentCar || {
+                make: make,
+                model: model,
+                year: year,
+                price: carPrice.replace(' €', '').replace(',', ''),
+                mileage: 0,
+                registerNumber: 'N/A'
+            };
+
+            // Populate inquiry modal with car info
+            const inquiryCarInfo = document.getElementById('inquiry-car-info');
+            inquiryCarInfo.innerHTML = `
+                <h3 style="color: #ff6b6b; margin-bottom: 0.5rem;">${selectedCarForInquiry.make} ${selectedCarForInquiry.model} (${selectedCarForInquiry.year})</h3>
+                <p style="color: #ff6b6b; font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem;">€${typeof selectedCarForInquiry.price === 'number' ? selectedCarForInquiry.price.toLocaleString() : selectedCarForInquiry.price}</p>
+                <p style="color: #ccc; font-size: 0.9rem;">Mileage: ${typeof selectedCarForInquiry.mileage === 'number' ? selectedCarForInquiry.mileage.toLocaleString() : selectedCarForInquiry.mileage} km</p>
+                <p style="color: #ccc; font-size: 0.9rem;">Register Number: ${selectedCarForInquiry.registerNumber}</p>
+            `;
+
+            // Close car modal and open inquiry modal
+            modal.style.display = 'none';
+            inquiryModal.style.display = 'block';
+        });
+    }
+
+    // Handle inquiry form submission
+    const inquiryForm = document.getElementById('inquiry-form');
+    if (inquiryForm) {
+        inquiryForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('inquiry-name').value;
+            const email = document.getElementById('inquiry-email').value;
+            const phone = document.getElementById('inquiry-phone').value;
+            const message = document.getElementById('inquiry-message').value;
+            const preferEmail = document.getElementById('inquiry-by-email').checked;
+            const preferPhone = document.getElementById('inquiry-by-phone').checked;
+
+            // Build preferred contact method string
+            let contactPreference = '';
+            if (preferEmail && preferPhone) {
+                contactPreference = 'Sähköposti tai puhelin';
+            } else if (preferEmail) {
+                contactPreference = 'Sähköposti';
+            } else if (preferPhone) {
+                contactPreference = 'Puhelin';
+            } else {
+                contactPreference = 'Ei määritelty';
+            }
+
+            // Build email body with car information first
+            let emailBody = '';
+
+            if (selectedCarForInquiry) {
+                const price = typeof selectedCarForInquiry.price === 'number' 
+                    ? selectedCarForInquiry.price 
+                    : parseInt(selectedCarForInquiry.price.replace(/[^0-9]/g, ''));
+                const mileage = typeof selectedCarForInquiry.mileage === 'number'
+                    ? selectedCarForInquiry.mileage
+                    : parseInt(selectedCarForInquiry.mileage);
+
+                emailBody = `AUTO JOSTA OLEN KIINNOSTUNUT:\n` +
+                    `Merkki: ${selectedCarForInquiry.make}\n` +
+                    `Malli: ${selectedCarForInquiry.model}\n` +
+                    `Vuosimalli: ${selectedCarForInquiry.year}\n` +
+                    `Hinta: €${price.toLocaleString()}\n` +
+                    `Mittarilukema: ${mileage.toLocaleString()} km\n` +
+                    `Rekisterinumero: ${selectedCarForInquiry.registerNumber}\n\n` +
+                    `${'='.repeat(40)}\n\n`;
+            }
+
+            emailBody += `VIESTI:\n${message}\n\n` +
+                `${'='.repeat(40)}\n\n` +
+                `YHTEYSTIEDOT:\n` +
+                `Nimi: ${name}\n` +
+                `Sähköposti: ${email}\n` +
+                `Puhelin: ${phone}\n` +
+                `Toivottu yhteydenottotapa: ${contactPreference}`;
+
+            // Create mailto link
+            const mailtoLink = `mailto:rar.car.autoliike@gmail.com?subject=Autokysely: ${encodeURIComponent(name)}&body=${encodeURIComponent(emailBody)}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            // Close modal
+            inquiryModal.style.display = 'none';
+
+            // Reset form
+            inquiryForm.reset();
+            document.getElementById('inquiry-by-email').checked = true; // Reset email checkbox to checked
+        });
+    }
 });
 
 // Load car data from Google Sheets
 async function loadCarData() {
     const inventoryContainer = document.getElementById('car-inventory');
+    
+    // Only run on inventory page - if container doesn't exist, we're on a different page
+    if (!inventoryContainer) {
+        console.log('Not on inventory page, skipping car data load');
+        return;
+    }
     
     try {
         console.log('Starting to load car data...');
@@ -99,7 +232,7 @@ async function loadCarData() {
             </div>
         `;
 
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbwHXsrMIT_W_NSqB48_Tt87jduNxr3MpILbN4Wx0a4PMBOEw134GnvSe2hg9JH2iOyJLQ/exec';
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbybGc5LwIGHV8CGiv4LskOTGA4C_xSzI8238NviGb5D9x3I707YR72RVDhEa-L2fGEOpw/exec';
         console.log('Fetching from:', scriptUrl);
         
         const response = await fetch(scriptUrl);
@@ -127,24 +260,65 @@ async function loadCarData() {
         // Process the data from Google Sheets
         carInventory = cars
             .filter(car => {
-                const isAvailable = car.status === 'Available' || !car.status;
+                const isAvailable = car.status === 'Available' || car.Status === 'Available' || !car.status;
                 return isAvailable;
             })
             .map(car => {
-                return {
+                // Handle year/mileage if combined (e.g., "2009, 214 000 km")
+                let year = parseInt(car.year) || parseInt(car.Year) || 0;
+                let mileage = parseInt(car.mileage) || parseInt(car.Mileage) || parseInt(car['Mileage (km)']) || 0;
+                
+                // Try to parse combined year/mileage format
+                const combinedField = car['Year, Mileage'] || car.yearMileage || '';
+                if (!year && !mileage && combinedField) {
+                    const parts = combinedField.split(',');
+                    if (parts.length >= 2) {
+                        year = parseInt(parts[0].trim()) || 0;
+                        mileage = parseInt(parts[1].replace(/[^0-9]/g, '')) || 0;
+                    }
+                }
+                
+                // Extract make/model from title if needed
+                let make = car.make || car.Make || car.Brand || '';
+                let model = car.model || car.Model || '';
+                
+                if (!make && !model && car.title) {
+                    const titleParts = car.title.split(' ');
+                    make = titleParts[0] || '';
+                    model = titleParts.slice(1).join(' ') || '';
+                }
+                
+                // Clean price (remove any non-numeric characters)
+                let price = parseInt(car.price) || parseInt(car.Price) || parseInt(car['Price (€)']) || 0;
+                if (!price && car.price) {
+                    price = parseInt(car.price.toString().replace(/[^0-9]/g, '')) || 0;
+                }
+                
+                // Create processed car object first
+                const processedCar = {
                     id: parseInt(car.id) || parseInt(car.ID) || 0,
-                    make: car.make || car.Make || car.Brand || '',
-                    model: car.model || car.Model || '',
-                    year: parseInt(car.year) || parseInt(car.Year) || 0,
-                    price: parseInt(car.price) || parseInt(car.Price) || parseInt(car['Price (€)']) || 0,
-                    mileage: parseInt(car.mileage) || parseInt(car.Mileage) || parseInt(car['Mileage (km)']) || 0,
+                    make: make,
+                    model: model,
+                    year: year,
+                    price: price,
+                    mileage: mileage,
+                    registerNumber: car.registerNumber || car['Register Number'] || car.registration || 'N/A',
                     fuelType: car.fuelType || car['Fuel Type'] || car.fuel || 'Petrol',
                     transmission: car.transmission || car.Transmission || 'Automatic',
-                    images: [getCarImage(car)],
+                    image: car.image || car.Image || car.imageUrl || car.ImageUrl || car['Image URL'] || '',
                     description: car.description || car.Description || 'Quality vehicle in excellent condition.',
-                    features: car.features ? car.features.split(',').map(f => f.trim()) : []
+                    features: car.features ? car.features.split(',').map(f => f.trim()) : [],
+                    nettiautoUrl: car['Nettiauto URL'] || car.nettiautoUrl || car.nettiauto || car.url || ''
                 };
-            });
+                
+                console.log('Processing car:', processedCar.make, processedCar.model, '- Raw image field:', car.image || car.Image || car.imageUrl || car.ImageUrl || car['Image URL']);
+                
+                // Now generate image using processed car data
+                processedCar.images = [getCarImage(processedCar)];
+                
+                return processedCar;
+            })
+            .filter(car => car.make && car.model && car.year); // Only keep cars with essential data
 
         console.log('Processed carInventory:', carInventory);
         
@@ -182,7 +356,8 @@ function useFallbackData() {
             transmission: "Automatic",
             images: [getCarImage({make: "Toyota", model: "Corolla", year: 2020})],
             description: "Well-maintained Toyota Corolla with low mileage. Perfect condition with full service history.",
-            features: ["Air Conditioning", "Bluetooth", "Parking Sensors", "Cruise Control"]
+            features: ["Air Conditioning", "Bluetooth", "Parking Sensors", "Cruise Control"],
+            nettiautoUrl: "https://www.nettiauto.com/en/toyota/corolla"
         },
         {
             id: 2,
@@ -195,7 +370,8 @@ function useFallbackData() {
             transmission: "Manual",
             images: [getCarImage({make: "Volkswagen", model: "Golf", year: 2019})],
             description: "Reliable Volkswagen Golf with excellent fuel economy. Recent service completed.",
-            features: ["Air Conditioning", "Touch Screen", "Parking Camera", "Heated Seats"]
+            features: ["Air Conditioning", "Touch Screen", "Parking Camera", "Heated Seats"],
+            nettiautoUrl: "https://www.nettiauto.com/en/volkswagen/golf"
         }
     ];
     
@@ -215,6 +391,13 @@ function useFallbackData() {
 function initializeInventory() {
     console.log('Initializing inventory with', carInventory.length, 'cars');
     
+    // Check if we're on the inventory page
+    const inventoryContainer = document.getElementById('car-inventory');
+    if (!inventoryContainer) {
+        console.log('Not on inventory page, skipping inventory initialization');
+        return;
+    }
+    
     // Populate filter dropdowns
     populateFilters();
     
@@ -232,6 +415,12 @@ function initializeInventory() {
 function populateFilters() {
     const makeFilter = document.getElementById('make-filter');
     const modelFilter = document.getElementById('model-filter');
+    
+    // Check if filter elements exist (only on inventory page)
+    if (!makeFilter || !modelFilter) {
+        console.log('Filter elements not found, skipping filter population');
+        return;
+    }
     
     // Clear existing options
     makeFilter.innerHTML = '<option value="">All Makes</option>';
@@ -350,6 +539,7 @@ function openCarModal(car) {
     const modalDescription = document.getElementById('modal-car-description');
     const modalSpecs = document.getElementById('modal-car-specs');
     const inquiryBtn = document.getElementById('inquiry-btn');
+    const nettiautoBtn = document.getElementById('nettiauto-btn');
     
     // Set modal content
     modalImage.src = car.images[0];
@@ -386,6 +576,23 @@ function openCarModal(car) {
     
     // Set button action
     inquiryBtn.href = `#contact?car=${encodeURIComponent(car.make + ' ' + car.model)}`;
+    
+    // Debug: Log the car object and nettiautoUrl
+    console.log('Car object in modal:', car);
+    console.log('Nettiauto URL:', car.nettiautoUrl);
+    
+    // Set Nettiauto button action
+    if (car.nettiautoUrl && car.nettiautoUrl.trim() !== '') {
+        console.log('Showing Nettiauto button with URL:', car.nettiautoUrl);
+        nettiautoBtn.style.display = 'inline-block';
+        nettiautoBtn.onclick = function() {
+            window.open(car.nettiautoUrl, '_blank');
+        };
+    } else {
+        // Hide button if no Nettiauto URL available
+        console.log('Hiding Nettiauto button - no URL found');
+        nettiautoBtn.style.display = 'none';
+    }
     
     // Show modal
     modal.style.display = 'block';

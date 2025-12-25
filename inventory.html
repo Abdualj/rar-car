@@ -3,36 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse RAR Car's current inventory of quality second hand vehicles. Filter by make, model, price, and year. All cars thoroughly inspected. Located in Tuusula, Finland.">
+    <meta name="keywords" content="car inventory Tuusula, used cars for sale, RAR Car inventory, browse used cars Finland, second hand vehicles">
+    <meta name="author" content="RAR Car Autoliike Oy">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Car Inventory - RAR Car Tuusula">
+    <meta property="og:description" content="Browse our selection of quality pre-owned vehicles. All cars inspected and ready to drive.">
+    
     <title>Inventory - RAR Car</title>
+    <link rel="icon" type="image/x-icon" href="pictures/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="pictures/favicon-32.png">
+    <link rel="apple-touch-icon" href="pictures/logo.jpg">
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="main.js"></script>
+    <script src="translations.js"></script>
 </head>
 <body>
     <div id="header-placeholder"></div>
     <section class="inventory-section" id="inventory">
         <div class="container">
-            <h2>Our Current Inventory</h2>
-            <p class="section-subtitle" style="color: rgba(255,255,255,0.9); margin-top: 1rem;">
+            <h2 data-translate="inventoryTitle">Our Current Inventory</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9); margin-top: 1rem;" data-translate="inventorySubtitle">
                 Browse our selection of quality pre-owned vehicles
             </p>
             <!-- Inventory Filters -->
             <div class="inventory-filters">
                 <div class="filter-group">
-                    <label for="make-filter">Make</label>
+                    <label for="make-filter" data-translate="filterMake">Make</label>
                     <select id="make-filter">
-                        <option value="">All Makes</option>
+                        <option value="" data-translate="filterAllMakes">All Makes</option>
                     </select>
                 </div>
                 <div class="filter-group">
-                    <label for="model-filter">Model</label>
+                    <label for="model-filter" data-translate="filterModel">Model</label>
                     <select id="model-filter">
-                        <option value="">All Models</option>
+                        <option value="" data-translate="filterAllModels">All Models</option>
                     </select>
                 </div>
                 <div class="filter-group">
-                    <label for="price-filter">Max Price (€)</label>
+                    <label for="price-filter" data-translate="filterMaxPrice">Max Price (€)</label>
                     <select id="price-filter">
-                        <option value="">Any Price</option>
+                        <option value="" data-translate="filterAnyPrice">Any Price</option>
                         <option value="5000">€5,000</option>
                         <option value="10000">€10,000</option>
                         <option value="15000">€15,000</option>
@@ -41,31 +54,31 @@
                     </select>
                 </div>
                 <div class="filter-group">
-                    <label for="year-filter">Min Year</label>
+                    <label for="year-filter" data-translate="filterMinYear">Min Year</label>
                     <select id="year-filter">
-                        <option value="">Any Year</option>
+                        <option value="" data-translate="filterAnyYear">Any Year</option>
                         <option value="2020">2020+</option>
                         <option value="2018">2018+</option>
                         <option value="2015">2015+</option>
                         <option value="2010">2010+</option>
                     </select>
                 </div>
-                <button class="btn reset-filters" id="reset-filters">Reset Filters</button>
+                <button class="btn reset-filters" id="reset-filters" data-translate="btnResetFilters">Reset Filters</button>
             </div>
             <div class="inventory-stats">
-                Showing <span id="cars-count">0</span> of <span id="total-cars">0</span> cars
+                <span data-translate="inventoryShowing">Showing</span> <span id="cars-count">0</span> <span data-translate="inventoryOf">of</span> <span id="total-cars">0</span> <span data-translate="inventoryCars">cars</span>
             </div>
             <!-- Dynamic car inventory will be loaded here -->
             <div id="car-inventory" class="car-showcase">
                 <div class="loading">
                     <div class="loading-spinner"></div>
-                    Loading our inventory...
+                    <span data-translate="inventoryLoading">Loading our inventory...</span>
                 </div>
             </div>
             <div class="inventory-box">
-                <h3>View All Available Cars</h3>
-                <p>Check out our complete inventory of quality second hand vehicles on Nettiauto. Updated regularly with new arrivals!</p>
-                <a href="https://www.nettiauto.com/yritys/1919697" target="_blank" class="btn">Visit Our Nettiauto Page</a>
+                <h3 data-translate="inventoryBoxTitle">View All Available Cars</h3>
+                <p data-translate="inventoryBoxDesc">Check out our complete inventory of quality second hand vehicles on Nettiauto. Updated regularly with new arrivals!</p>
+                <a href="https://www.nettiauto.com/yritys/1919697" target="_blank" class="btn" data-translate="inventoryBoxBtn">Visit Our Nettiauto Page</a>
             </div>
         </div>
     </section>
@@ -83,19 +96,79 @@
                     <!-- Specifications will be populated by JavaScript -->
                 </div>
                 <div class="car-actions">
-                    <a href="#contact" class="btn" id="inquiry-btn">Make an Inquiry</a>
-                    <button class="btn btn-secondary" id="nettiauto-btn">View on Nettiauto</button>
+                    <button class="btn" id="inquiry-btn" data-translate="modalInquiryBtn">Make an Inquiry</button>
+                    <button class="btn btn-secondary" id="nettiauto-btn" data-translate="modalNettiautBtn">View on Nettiauto</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Inquiry Modal -->
+    <div id="inquiry-modal" class="car-modal" style="display: none;">
+        <div class="modal-content">
+            <button class="close-modal" id="close-inquiry-modal">&times;</button>
+            <div class="car-details" style="padding: 2rem;">
+                <h2 style="color: #ff6b6b; margin-bottom: 1rem;" data-translate="modalInquiryTitle">Inquire About This Car</h2>
+                <div id="inquiry-car-info" style="background: #1a1a1a; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #444;">
+                    <!-- Selected car info will be populated here -->
+                </div>
+                <form id="inquiry-form">
+                    <div class="form-group">
+                        <label data-translate="contactFormName">Name</label>
+                        <input type="text" name="name" id="inquiry-name" data-translate="contactFormName" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="contactFormEmail">Email</label>
+                        <input type="email" name="email" id="inquiry-email" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="contactFormPhone">Phone</label>
+                        <input type="tel" name="phone" id="inquiry-phone" placeholder="050 5121787">
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="contactFormPreferredMethod">Preferred Contact Method</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="contact-email" id="inquiry-by-email" value="email" checked>
+                                <span data-translate="contactFormMethodEmail">Email</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="contact-phone" id="inquiry-by-phone" value="phone">
+                                <span data-translate="contactFormMethodPhone">Phone</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="contactFormMessage">Message</label>
+                        <textarea name="message" id="inquiry-message" data-translate="inquiryMessagePlaceholder" placeholder="Tell us about your interest in this vehicle..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn" data-translate="inquirySendBtn">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div id="footer-placeholder"></div>
     <script>
     // Simple HTML include for header and footer
     function includeHTML(id, file) {
         fetch(file)
             .then(res => res.text())
-            .then(data => { document.getElementById(id).innerHTML = data; });
+            .then(data => { 
+                document.getElementById(id).innerHTML = data;
+                // Re-initialize translations after loading header/footer
+                if (typeof translatePage === 'function') {
+                    translatePage(currentLang);
+                }
+                // Reinitialize language toggle button
+                if (typeof initLanguageToggle === 'function') {
+                    initLanguageToggle();
+                }
+                // Reinitialize side menu
+                if (typeof initSideMenu === 'function') {
+                    initSideMenu();
+                }
+            });
     }
     includeHTML('header-placeholder', 'header.html');
     includeHTML('footer-placeholder', 'footer.html');
