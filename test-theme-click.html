@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Click Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="translations.js"></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    
+    <div style="padding: 100px; text-align: center;">
+        <h1>Theme Toggle Click Test</h1>
+        
+        <div style="margin: 30px 0; padding: 30px; background: var(--bg-card); border-radius: 12px;">
+            <h2>Current Theme: <span id="current-theme" style="color: var(--accent-primary);">Loading...</span></h2>
+            <p style="font-size: 1.2rem; margin-top: 20px;">
+                Background: <span style="background: var(--bg-primary); padding: 10px 20px; border: 2px solid var(--border-color); border-radius: 4px;">Primary</span>
+            </p>
+            <p style="font-size: 1.2rem;">
+                Text: <span style="color: var(--text-primary); font-weight: bold;">Primary Text Color</span>
+            </p>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <button onclick="testThemeManually()" style="padding: 15px 40px; font-size: 18px; cursor: pointer; background: var(--accent-primary); color: white; border: none; border-radius: 8px; margin: 10px;">
+                Manually Toggle Theme
+            </button>
+            
+            <button onclick="checkThemeButton()" style="padding: 15px 40px; font-size: 18px; cursor: pointer; background: #333; color: white; border: none; border-radius: 8px; margin: 10px;">
+                Check Theme Button
+            </button>
+        </div>
+        
+        <div id="console-output" style="margin-top: 30px; padding: 20px; background: #1a1a1a; color: #0f0; font-family: monospace; text-align: left; border-radius: 8px; max-width: 800px; margin-left: auto; margin-right: auto; min-height: 200px;">
+            <strong style="color: #fff;">Console Output:</strong><br><br>
+        </div>
+    </div>
+    
+    <script>
+    function log(msg, color = '#0f0') {
+        const output = document.getElementById('console-output');
+        const timestamp = new Date().toLocaleTimeString();
+        output.innerHTML += `<span style="color: ${color}">[${timestamp}] ${msg}</span><br>`;
+        output.scrollTop = output.scrollHeight;
+    }
+    
+    function updateThemeDisplay() {
+        const themeSpan = document.getElementById('current-theme');
+        if (themeSpan && typeof currentTheme !== 'undefined') {
+            themeSpan.textContent = currentTheme.toUpperCase() + ' MODE';
+        }
+    }
+    
+    function testThemeManually() {
+        log('🔄 Manual toggle clicked...', '#ff6b6b');
+        if (typeof toggleTheme === 'function') {
+            toggleTheme();
+            updateThemeDisplay();
+            log('✅ Theme toggled successfully!', '#0f0');
+        } else {
+            log('❌ toggleTheme function not found!', '#f00');
+        }
+    }
+    
+    function checkThemeButton() {
+        log('🔍 Checking theme button...', '#00bfff');
+        const btn = document.getElementById('theme-toggle');
+        
+        if (btn) {
+            log('✅ Button found!', '#0f0');
+            log('  - ID: ' + btn.id, '#fff');
+            log('  - Display: ' + window.getComputedStyle(btn).display, '#fff');
+            log('  - Visibility: ' + window.getComputedStyle(btn).visibility, '#fff');
+            log('  - Position: ' + window.getComputedStyle(btn).position, '#fff');
+            log('  - Top: ' + window.getComputedStyle(btn).top, '#fff');
+            log('  - Right: ' + window.getComputedStyle(btn).right, '#fff');
+            log('  - Z-index: ' + window.getComputedStyle(btn).zIndex, '#fff');
+            log('  - Has onclick: ' + (btn.onclick !== null), '#fff');
+            
+            // Try clicking it programmatically
+            log('🖱️ Attempting programmatic click...', '#00bfff');
+            btn.click();
+            updateThemeDisplay();
+            log('✅ Programmatic click succeeded!', '#0f0');
+        } else {
+            log('❌ Button NOT found!', '#f00');
+        }
+    }
+    
+    // Simple HTML include for header
+    function includeHTML(id, file) {
+        fetch(file)
+            .then(res => res.text())
+            .then(data => { 
+                document.getElementById(id).innerHTML = data;
+                log('✅ Header loaded', '#0f0');
+                
+                if (typeof translatePage === 'function') {
+                    translatePage(currentLang);
+                }
+                if (typeof initLanguageToggle === 'function') {
+                    initLanguageToggle();
+                }
+                if (typeof initThemeToggle === 'function') {
+                    initThemeToggle();
+                }
+                
+                updateThemeDisplay();
+                
+                setTimeout(() => {
+                    log('🔍 Checking for theme button...', '#00bfff');
+                    const btn = document.getElementById('theme-toggle');
+                    if (btn) {
+                        log('✅ Theme button is present!', '#0f0');
+                    } else {
+                        log('❌ Theme button NOT found!', '#f00');
+                    }
+                }, 500);
+            })
+            .catch(err => {
+                log('❌ Error loading header: ' + err, '#f00');
+            });
+    }
+    
+    log('🚀 Page loading...', '#00bfff');
+    log('📁 Loading header.html...', '#fff');
+    includeHTML('header-placeholder', 'header.html');
+    
+    // Log initial state
+    setTimeout(() => {
+        log('📊 Initial state:', '#00bfff');
+        log('  - toggleTheme exists: ' + (typeof toggleTheme !== 'undefined'), '#fff');
+        log('  - currentTheme: ' + (typeof currentTheme !== 'undefined' ? currentTheme : 'undefined'), '#fff');
+        updateThemeDisplay();
+    }, 1000);
+    </script>
+</body>
+</html>

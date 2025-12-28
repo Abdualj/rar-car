@@ -259,7 +259,7 @@ body.menu-open::before {
 
 /* Main Navigation - Always Visible */
 nav.main-nav {
-    background: #1a1a1a;
+    background: var(--bg-secondary);
     padding: 0;
     box-shadow: 0 2px 15px rgba(139,0,0,0.2);
     border-top: 1px solid #333;
@@ -296,11 +296,11 @@ nav.main-nav a {
     text-align: center;
     transition: all 0.3s;
     border-bottom: 3px solid transparent;
-    background: #1a1a1a;
+    background: var(--bg-secondary);
 }
 
 nav.main-nav a:hover {
-    background: #2d1a1a;
+    background: var(--bg-tertiary);
     border-bottom-color: #ff6b6b;
     color: #fff;
 }
@@ -563,11 +563,11 @@ nav.main-nav a:hover {
 
 .section {
     padding: 5rem 20px;
-    background: #1a1a1a;
+    background: var(--bg-secondary);
 }
 
 .section:nth-child(even) {
-    background: #121212;
+    background: var(--bg-primary);
 }
 
 .section h2 {
@@ -619,14 +619,14 @@ nav.main-nav a:hover {
 }
 
 .inventory-box {
-    background: #2d2d2d;
-    color: #e0e0e0;
+    background: var(--bg-hover);
+    color: var(--text-primary);
     padding: 3rem;
     border-radius: 12px;
     max-width: 800px;
     margin: 3rem auto 0;
     box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
 }
 
 .inventory-box h3 {
@@ -666,12 +666,12 @@ nav.main-nav a:hover {
 
 .filter-group select, .filter-group input {
     padding: 0.4rem;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     min-width: 120px;
     font-size: 0.9rem;
-    background: #1a1a1a;
-    color: #e0e0e0;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .filter-group select:focus, .filter-group input:focus {
@@ -687,7 +687,7 @@ nav.main-nav a:hover {
     font-size: 0.9rem;
     background: #333;
     color: #ff6b6b;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
 }
 
 .reset-filters:hover {
@@ -728,11 +728,11 @@ nav.main-nav a:hover {
 .no-results {
     text-align: center;
     padding: 2rem;
-    background: #2d2d2d;
+    background: var(--bg-hover);
     border-radius: 8px;
     margin: 1.5rem 0;
     grid-column: 1 / -1;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
 }
 
 .no-results h3 {
@@ -765,7 +765,7 @@ nav.main-nav a:hover {
 }
 
 .car-card {
-    background: #2d2d2d;
+    background: var(--bg-hover);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 3px 20px rgba(0,0,0,0.4);
@@ -775,7 +775,7 @@ nav.main-nav a:hover {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
 }
 
 .car-card:hover {
@@ -827,13 +827,13 @@ nav.main-nav a:hover {
 }
 
 .modal-content {
-    background: #2d2d2d;
+    background: var(--bg-hover);
     margin: 2rem auto;
     max-width: 700px;
     border-radius: 8px;
     overflow: hidden; /* Back to hidden for rounded corners */
     position: relative;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
     box-shadow: 0 10px 50px rgba(139,0,0,0.3);
     animation: modalSlideIn 0.3s ease;
 }
@@ -890,7 +890,7 @@ nav.main-nav a:hover {
 
 .car-details {
     padding: 1.5rem;
-    color: #e0e0e0;
+    color: var(--text-primary);
 }
 
 .car-price {
@@ -911,7 +911,7 @@ nav.main-nav a:hover {
     display: flex;
     justify-content: space-between;
     padding: 0.4rem 0;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid var(--border-color);
     font-size: 0.9rem;
 }
 
@@ -940,12 +940,12 @@ nav.main-nav a:hover {
 }
 
 .about-text {
-    background: #2d2d2d;
+    background: var(--bg-hover);
     padding: 2.5rem;
     border-radius: 12px;
     box-shadow: 0 5px 25px rgba(0,0,0,0.3);
     position: relative;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
 }
 
 .about-text h3 {
@@ -996,7 +996,7 @@ nav.main-nav a:hover {
     text-align: center;
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     transition: transform 0.3s ease;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
 }
 
 .stat-box:hover {
@@ -1026,7 +1026,7 @@ nav.main-nav a:hover {
 }
 
 .feature-card {
-    background: #2d2d2d;
+    background: var(--bg-hover);
     padding: 2.5rem;
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
@@ -1034,7 +1034,7 @@ nav.main-nav a:hover {
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
 }
 
 .feature-card::before {
@@ -1267,7 +1267,7 @@ nav.main-nav a:hover {
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
     cursor: pointer;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
 }
 
 .gallery-grid img:hover {
@@ -1285,11 +1285,11 @@ nav.main-nav a:hover {
 }
 
 .contact-info {
-    background: #2d2d2d;
+    background: var(--bg-hover);
     padding: 2.5rem;
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
 }
 
 .contact-info h3 {
@@ -1303,14 +1303,14 @@ nav.main-nav a:hover {
     align-items: center;
     margin-bottom: 1.5rem;
     padding: 1rem;
-    background: #1a1a1a;
+    background: var(--bg-secondary);
     border-radius: 8px;
     transition: all 0.3s;
     border: 1px solid #333;
 }
 
 .contact-item:hover {
-    background: #2d1a1a;
+    background: var(--bg-tertiary);
     transform: translateX(5px);
     border-color: #8B0000;
 }
@@ -1336,7 +1336,7 @@ nav.main-nav a:hover {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
     position: relative;
 }
 
@@ -1387,11 +1387,11 @@ nav.main-nav a:hover {
 }
 
 .contact-form {
-    background: #2d2d2d;
+    background: var(--bg-hover);
     padding: 2.5rem;
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
 }
 
 .contact-form h3 {
@@ -1421,8 +1421,8 @@ nav.main-nav a:hover {
     font-family: inherit;
     font-size: 1rem;
     transition: border-color 0.3s;
-    background: #1a1a1a;
-    color: #e0e0e0;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -1525,7 +1525,7 @@ nav.main-nav a:hover {
     justify-content: space-between;
     padding: 0.4rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    color: #e0e0e0;
+    color: var(--text-primary);
 }
 
 .hours-row:last-child {
